@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="N30j0su3">
+    <meta name="description" content="Kukun choropleth-map code challenge by N30j0su3">
+    <link rel="icon" sizes="32x32" type="image/png" href="./assets/img/favicon-32x32.png">
+    <title>Kukun choropleth-map</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <!-- Styles for leaflet | MAP -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+    <!-- Styles landing -->
+    <link rel="stylesheet" href="./assets/css/styles.css"/>
+    <!-- kukun icons -->
+    <link rel="stylesheet" href="https://cdn.mykukun.com/kukun-lib/v2-0-0/dist/iconography/my-kukun-icons.min.css"/>
+
+</head>
+<body>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-md navbar-expand-lg navbar-light bg-light fixed-top navbar-styles">
+            <div class="container-fluid navbar-wrap">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="k-icon-nav-ham"></i><!--<span class="navbar-toggler-icon"></span>-->
+                </button>
+                <a href="https://mykukun.com/" >
+                    <img src="./assets/img/kukun-logo.svg" class="k-nav-logo" alt="Kukun logo">
+                </a>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Products</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">Enterprise</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">Contractors</a>
+                    </li>
+                </ul>
+                <button class="btn btn-outline-success kk-btn" type="submit">Sign in</button>
+                </div>
+                <button class="navbar-toggler" type="button">
+                    Sign in
+                </button>
+            </div>
+        </nav>
+    </header>
+    <!--Hero container-->
+    <div class="hero-container">
+        <div class="container-fluid k-container k-hero-title-container hero-title">
+            <div class="k-hero-title-wrapper">
+                <!-- MAIN TITLE -->
+                <h1 class="">
+                <!-- Home Renovation Cost Estimator -->
+                    Owning a Property in California CA
+                </h1>
+                <!-- MAIN DESCRIPTION -->
+                <div class="k-main-description">
+                    <h2 class="subtitle">Find key information about what surrounds properties to live in California CA
+                    </h2>
+                    <p class="k-h6 k-text-left k-color-secondary-dark mb-0">
+                        Want to know about a specific area?<br>Try My Neighborhood from <a href="#">iHomeManager™</a>
+                    </p>
+                </div>
+            </div>
+            <div class="k-hero-img-wrapper">
+                <img class="hero-img" src="./assets/img/hero-img.png" alt="hero-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- Map Section -->
+
+    <div class="container container-fluid map-title-container">
+        <h1 class="title-second">Average remodelation cost by state</h1>
+    </div>
+    <div class="container main-container">
+        <div id='map'></div>
+    </div>
+
+    <!-- About cities Section -->
+
+    <div class="container container-fluid about-title-container">
+        <h1 class="title-second">About cities in California</h1>
+    </div>
+    <div class="container container-fluid cities-container">
+        <div class="cities-section">
+            <h3 class="about-subtitle">Best quality of life cities in the state</h3>
+            <div class="row">
+                <div class="col-sm-12 col-md-4">
+                    <ol>
+                        <li>San Francisco. Pop.: 874,961</li>
+                        <li>San Jose. Pop.: 1.028 million</li>
+                        <li>San Diego. Pop.: 1.41 million</li>
+                        <li>Sacramento. Pop.: 500,930</li>
+                    </ol>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <ol start=5>
+                        <li>Santa Barbara. Pop.: 91,376</li>
+                        <li>Santa Rosa. Pop.: 179,701</li>
+                        <li>Los Angeles. Pop.: 3.967 million</li>
+                        <li>Vallejo. Pop.: 121,267</li>
+                    </ol>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <ol start=9>
+                        <li>Fairfield. Pop.: 115,282</li>
+                        <li>Fresno. Pop.: 525,010</li>
+                        <li>Salinas. Pop.: 156,143</li>
+                        <li>Modesto. Pop.: 212,616</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="cities-section">
+            <h3 class="about-subtitle">The most affordable cities in CA to live in</h3>
+            <div class="row">
+                <div class="col-sm-12 col-md-4">
+                    <ol>
+                        <li>San Francisco. Pop.: 874,961</li>
+                        <li>San Jose. Pop.: 1.028 million</li>
+                        <li>San Diego. Pop.: 1.41 million</li>
+                        <li>Sacramento. Pop.: 500,930</li>
+                    </ol>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <ol start=5>
+                        <li>Santa Barbara. Pop.: 91,376</li>
+                        <li>Santa Rosa. Pop.: 179,701</li>
+                        <li>Los Angeles. Pop.: 3.967 million</li>
+                        <li>Vallejo. Pop.: 121,267</li>
+                    </ol>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <ol start=9>
+                        <li>Fairfield. Pop.: 115,282</li>
+                        <li>Fresno. Pop.: 525,010</li>
+                        <li>Salinas. Pop.: 156,143</li>
+                        <li>Modesto. Pop.: 212,616</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="cities-section">
+            <h3 class="about-subtitle">Cities with the best school districts in California</h3>
+            <div class="row">
+                <div class="col-sm-12 col-md-4">
+                    <ol>
+                        <li>San Francisco. Pop.: 874,961</li>
+                        <li>San Jose. Pop.: 1.028 million</li>
+                    </ol>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <ol start=3>
+                        <li>Santa Barbara. Pop.: 91,376</li>
+                        <li>Santa Rosa. Pop.: 179,701</li>
+                    </ol>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <ol start=5>
+                        <li>Fairfield. Pop.: 115,282</li>
+                        <li>Fresno. Pop.: 525,010</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- list of cities by state -->
+
+    <div class="container container-fluid find-title-container">
+        <h3 class="title-find">List of cities in California</h3>
+    </div>
+    <div class="container container-fluid find-container">
+        <div class="find-up row">
+            <div class="col-sm-12 col-md-2">
+                <a href="#" class="link-find">Abbott</a>
+                <a href="#" class="link-find">Abernathy</a>
+                <a href="#" class="link-find">Abilene</a>
+                <a href="#" class="link-find">Ace</a>
+                <a href="#" class="link-find">Ackerly</a>
+            </div>
+            <div class="col-sm-12 col-md-2">
+                <a href="#" class="link-find">Addison</a>
+                <a href="#" class="link-find">Adkins</a>
+                <a href="#" class="link-find">Adrian</a>
+                <a href="#" class="link-find">Afton</a>
+                <a href="#" class="link-find">Agua dulce</a>
+            </div>
+            <div class="col-sm-12 col-md-2">
+                <a href="#" class="link-find">Aiken</a>
+                <a href="#" class="link-find">Alamo</a>
+                <a href="#" class="link-find">Alanreed</a>
+                <a href="#" class="link-find">Alba</a>
+                <a href="#" class="link-find">Albany</a>
+            </div>
+            <div class="col-sm-12 col-md-2">
+                <a href="#" class="link-find">Aledo</a>
+                <a href="#" class="link-find">Alice</a>
+                <a href="#" class="link-find">Alief</a>
+                <a href="#" class="link-find">Allen</a>
+                <a href="#" class="link-find">Alleyton</a>
+            </div>
+            <div class="col-sm-12 col-md-2">
+                <a href="#" class="link-find">Allison</a>
+                <a href="#" class="link-find">Alpine</a>
+                <a href="#" class="link-find">Altair</a>
+                <a href="#" class="link-find">Alto</a>
+                <a href="#" class="link-find">Alvarado</a>
+            </div><!--
+            <div class="col-sm-12 col-md-2">
+                <a href="#" class="link-find">Alvin</a>
+                <a href="#" class="link-find">Alvord</a>
+                <a href="#" class="link-find">Amarillo</a>
+                <a href="#" class="link-find">Amherst</a>
+                <a href="#" class="link-find">Anahuac</a>
+            </div>-->
+        </div>
+        <div class="find-down">
+            <div class="letters">
+                <a href="#" class="letter">A</a>
+                <a href="#" class="letter">B</a>
+                <a href="#" class="letter">C</a>
+                <a href="#" class="letter">D</a>
+                <a href="#" class="letter">E</a>
+                <a href="#" class="letter">F</a>
+                <a href="#" class="letter">G</a>
+                <a href="#" class="letter">H</a>
+                <a href="#" class="letter">I</a>
+                <a href="#" class="letter">J</a>
+                <a href="#" class="letter">K</a>
+                <a href="#" class="letter">L</a>
+                <a href="#" class="letter">M</a>
+                <a href="#" class="letter">N</a>
+                <a href="#" class="letter">O</a>
+                <a href="#" class="letter">P</a>
+                <a href="#" class="letter">Q</a>
+                <a href="#" class="letter">R</a>
+                <a href="#" class="letter">S</a>
+                <a href="#" class="letter">T</a>
+                <a href="#" class="letter">U</a>
+                <a href="#" class="letter">V</a>
+                <a href="#" class="letter">W</a>
+                <a href="#" class="letter">X</a>
+                <a href="#" class="letter">Y</a>
+                <a href="#" class="letter">Z</a>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer>
+        <div class="row">
+            <div class="col-md-2">hey</div>
+            <div class="col-md-2">hey</div>
+            <div class="col-md-2">hey</div>
+            <div class="col-md-2">hey</div>
+            <div class="col-md-2">hey</div>
+        </div>
+    </footer>
+
+    <!--Leaflet-->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <!--Bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- GEO DATA | change this for the final JSON -->
+    <script type="text/javascript" src="./assets/js/us-states.js"></script>
+    <!-- Map logic using leaflet -->
+    <script type="text/javascript" src="./assets/js/map.js"></script>
+</body>
+</html>
